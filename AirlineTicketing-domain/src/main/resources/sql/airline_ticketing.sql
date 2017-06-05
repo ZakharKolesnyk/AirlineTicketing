@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 05 2017 г., 16:22
+-- Время создания: Июн 05 2017 г., 18:53
 -- Версия сервера: 10.1.19-MariaDB
 -- Версия PHP: 7.0.13
 
@@ -214,17 +214,59 @@ CREATE TABLE `flights` (
   `id_flight` int(11) NOT NULL,
   `id_departure_airport` int(11) NOT NULL,
   `id_destination_airport` int(11) NOT NULL,
-  `departure_date` varchar(32) NOT NULL,
-  `arrival_date` varchar(32) NOT NULL,
-  `range_flight` int(11) NOT NULL
+  `departure_date` bigint(20) NOT NULL,
+  `arrival_date` bigint(20) NOT NULL,
+  `range_flight` int(11) NOT NULL,
+  `id_plane` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `flights`
 --
 
-INSERT INTO `flights` (`id_flight`, `id_departure_airport`, `id_destination_airport`, `departure_date`, `arrival_date`, `range_flight`) VALUES
-(1, 1, 2, '2017-05-29 23:30:00', '2017-05-30 13:30:00', 2800);
+INSERT INTO `flights` (`id_flight`, `id_departure_airport`, `id_destination_airport`, `departure_date`, `arrival_date`, `range_flight`, `id_plane`) VALUES
+(1, 1, 2, 1499109330000, 1499152530000, 2800, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `passengers`
+--
+
+CREATE TABLE `passengers` (
+  `id_user` int(11) NOT NULL,
+  `first_name` varchar(32) NOT NULL,
+  `last_name` varchar(32) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `identity_number` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Дамп данных таблицы `passengers`
+--
+
+INSERT INTO `passengers` (`id_user`, `first_name`, `last_name`, `email`, `identity_number`) VALUES
+(1, 'John', 'Chima', 'john@mail.co', '12674512712'),
+(2, 'Jim', 'Times', 'tim@mail.co', '56418461242');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `planes`
+--
+
+CREATE TABLE `planes` (
+  `id_plane` int(11) NOT NULL,
+  `name_flight` varchar(16) NOT NULL,
+  `model_plane` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Дамп данных таблицы `planes`
+--
+
+INSERT INTO `planes` (`id_plane`, `name_flight`, `model_plane`) VALUES
+(1, 'NE648', 'Boeing 737');
 
 -- --------------------------------------------------------
 
@@ -280,28 +322,6 @@ CREATE TABLE `tickets` (
 INSERT INTO `tickets` (`id_ticket`, `id_user`, `id_flight`, `id_seat`, `date_order`, `cost`) VALUES
 (1, 1, 1, 1, '2017-06-05 14:14:54', 1800);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `users`
---
-
-CREATE TABLE `users` (
-  `id_user` int(11) NOT NULL,
-  `first_name` varchar(32) NOT NULL,
-  `last_name` varchar(32) NOT NULL,
-  `email` varchar(64) NOT NULL,
-  `identity_number` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Дамп данных таблицы `users`
---
-
-INSERT INTO `users` (`id_user`, `first_name`, `last_name`, `email`, `identity_number`) VALUES
-(1, 'John', 'Chima', 'john@mail.co', '12674512712'),
-(2, 'Jim', 'Times', 'tim@mail.co', '56418461242');
-
 --
 -- Индексы сохранённых таблиц
 --
@@ -340,7 +360,22 @@ ALTER TABLE `enum_seats`
 ALTER TABLE `flights`
   ADD PRIMARY KEY (`id_flight`),
   ADD KEY `flights_airports_id_dprtr_airport_fk` (`id_departure_airport`),
-  ADD KEY `flights_airports_id_dstnt_airport_fk` (`id_destination_airport`);
+  ADD KEY `flights_airports_id_dstnt_airport_fk` (`id_destination_airport`),
+  ADD KEY `flights_planes_id_plane_fk` (`id_plane`);
+
+--
+-- Индексы таблицы `passengers`
+--
+ALTER TABLE `passengers`
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `users_email_uindex` (`email`),
+  ADD UNIQUE KEY `users_identity_number_uindex` (`identity_number`);
+
+--
+-- Индексы таблицы `planes`
+--
+ALTER TABLE `planes`
+  ADD PRIMARY KEY (`id_plane`);
 
 --
 -- Индексы таблицы `seats`
@@ -358,14 +393,6 @@ ALTER TABLE `tickets`
   ADD KEY `tickets_flights_id_flight_fk` (`id_flight`),
   ADD KEY `tickets_seats_id_seat_fk` (`id_seat`),
   ADD KEY `tickets_users_id_user_fk` (`id_user`);
-
---
--- Индексы таблицы `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `users_email_uindex` (`email`),
-  ADD UNIQUE KEY `users_identity_number_uindex` (`identity_number`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -397,6 +424,16 @@ ALTER TABLE `enum_seats`
 ALTER TABLE `flights`
   MODIFY `id_flight` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT для таблицы `passengers`
+--
+ALTER TABLE `passengers`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT для таблицы `planes`
+--
+ALTER TABLE `planes`
+  MODIFY `id_plane` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT для таблицы `seats`
 --
 ALTER TABLE `seats`
@@ -406,11 +443,6 @@ ALTER TABLE `seats`
 --
 ALTER TABLE `tickets`
   MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `users`
---
-ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
@@ -431,9 +463,9 @@ ALTER TABLE `cities`
 -- Ограничения внешнего ключа таблицы `flights`
 --
 ALTER TABLE `flights`
-  ADD CONSTRAINT `flights_airports_id_airport_fk` FOREIGN KEY (`id_departure_airport`) REFERENCES `airports` (`id_airport`),
   ADD CONSTRAINT `flights_airports_id_dprtr_airport_fk` FOREIGN KEY (`id_departure_airport`) REFERENCES `airports` (`id_airport`),
-  ADD CONSTRAINT `flights_airports_id_dstnt_airport_fk` FOREIGN KEY (`id_destination_airport`) REFERENCES `airports` (`id_airport`);
+  ADD CONSTRAINT `flights_airports_id_dstnt_airport_fk` FOREIGN KEY (`id_destination_airport`) REFERENCES `airports` (`id_airport`),
+  ADD CONSTRAINT `flights_planes_id_plane_fk` FOREIGN KEY (`id_plane`) REFERENCES `planes` (`id_plane`);
 
 --
 -- Ограничения внешнего ключа таблицы `seats`
@@ -448,7 +480,7 @@ ALTER TABLE `seats`
 ALTER TABLE `tickets`
   ADD CONSTRAINT `tickets_flights_id_flight_fk` FOREIGN KEY (`id_flight`) REFERENCES `flights` (`id_flight`),
   ADD CONSTRAINT `tickets_seats_id_seat_fk` FOREIGN KEY (`id_seat`) REFERENCES `seats` (`id_seat`),
-  ADD CONSTRAINT `tickets_users_id_user_fk` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+  ADD CONSTRAINT `tickets_users_id_user_fk` FOREIGN KEY (`id_user`) REFERENCES `passengers` (`id_user`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

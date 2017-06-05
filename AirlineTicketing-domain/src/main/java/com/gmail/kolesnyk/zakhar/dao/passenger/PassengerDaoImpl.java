@@ -1,40 +1,36 @@
-package com.gmail.kolesnyk.zakhar.dao.user;
+package com.gmail.kolesnyk.zakhar.dao.passenger;
 
 import com.gmail.kolesnyk.zakhar.dao.AbstractDao;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-
-import java.math.BigInteger;
-import java.util.List;
 
 
 /**
- * class implements and extends methods that need to ORM relations with {@link User} class
+ * class implements and extends methods that need to ORM relations with {@link Passenger} class
  */
 @Repository
-public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
+public class PassengerDaoImpl extends AbstractDao<Passenger, Integer> implements PassengerDao {
 
 //    @Override
-//    public User selectByPhone(String phone) {
-//        return (User) sessionFactory.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("phone", phone)).uniqueResult();
+//    public Passenger selectByPhone(String phone) {
+//        return (Passenger) sessionFactory.getCurrentSession().createCriteria(Passenger.class).add(Restrictions.eq("phone", phone)).uniqueResult();
 //    }
 //
 //    @Override
-//    public User selectByEmail(String email) {
-//        return (User) sessionFactory.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("email", email)).uniqueResult();
+//    public Passenger selectByEmail(String email) {
+//        return (Passenger) sessionFactory.getCurrentSession().createCriteria(Passenger.class).add(Restrictions.eq("email", email)).uniqueResult();
 //    }
 //
 //    @Override
-//    public User selectByLogin(String login) {
-//        return (User) sessionFactory.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("login", login)).uniqueResult();
+//    public Passenger selectByLogin(String login) {
+//        return (Passenger) sessionFactory.getCurrentSession().createCriteria(Passenger.class).add(Restrictions.eq("login", login)).uniqueResult();
 //    }
 //
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public List<User> friendList(Integer idUser) {
+//    public List<Passenger> friendList(Integer idUser) {
 //        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = :idUser)")
-//                .addEntity(User.class).setParameter("idUser", idUser).list();
+//                .addEntity(Passenger.class).setParameter("idUser", idUser).list();
 //    }
 //
 //    @Override
@@ -46,10 +42,10 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public List<User> friendSublist(Integer idUser, int offset, int amount) {
+//    public List<Passenger> friendSublist(Integer idUser, int offset, int amount) {
 //        return sessionFactory.getCurrentSession().createSQLQuery
 //                ("SELECT * FROM users WHERE id_user IN (SELECT id_friend FROM friends WHERE id_user = :idUser) ORDER BY id_user ASC LIMIT :offset, :amount ")
-//                .addEntity(User.class).setParameter("idUser", idUser).setParameter("offset", offset).setParameter("amount", amount).list();
+//                .addEntity(Passenger.class).setParameter("idUser", idUser).setParameter("offset", offset).setParameter("amount", amount).list();
 //    }
 //
 //    @Override
@@ -67,10 +63,10 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
 //    }
 //
 //    @Override
-//    public User byHashForEmail(String hashForEmail) {
-//        return (User) sessionFactory.getCurrentSession().createSQLQuery
+//    public Passenger byHashForEmail(String hashForEmail) {
+//        return (Passenger) sessionFactory.getCurrentSession().createSQLQuery
 //                ("SELECT * FROM users WHERE id_user IN (SELECT confirm_emails.id_user FROM confirm_emails WHERE hashed_email = :hashedEmail)")
-//                .addEntity(User.class).setParameter("hashedEmail", hashForEmail).uniqueResult();
+//                .addEntity(Passenger.class).setParameter("hashedEmail", hashForEmail).uniqueResult();
 //    }
 //
 //    @Override
@@ -96,7 +92,7 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public List<User> searchByName(String search) {
+//    public List<Passenger> searchByName(String search) {
 //        String[] split = search.split(" ");
 //        String firstName = split[0].trim().toLowerCase();
 //        String lastName = "";
@@ -104,7 +100,7 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
 //            lastName = split[1].trim().toLowerCase();
 //        }
 //        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE (first_name LIKE lower(:firstName) AND last_name LIKE lower(:lastName)) OR (first_name LIKE lower(:lastName) AND last_name LIKE lower(:firstName));")
-//                .addEntity(User.class).setParameter("firstName", "%" + firstName + "%").setParameter("lastName", "%" + lastName + "%").list();
+//                .addEntity(Passenger.class).setParameter("firstName", "%" + firstName + "%").setParameter("lastName", "%" + lastName + "%").list();
 //    }
 //
 //    @Override
@@ -151,10 +147,10 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public List<User> listInvitationsForFriendship(int idUser) {
+//    public List<Passenger> listInvitationsForFriendship(int idUser) {
 //        return sessionFactory.getCurrentSession()
 //                .createSQLQuery("SELECT * FROM users WHERE id_user IN (SELECT inviting_for_friendship.id_user FROM inviting_for_friendship WHERE id_friend = :idUser)")
-//                .addEntity(User.class).setParameter("idUser", idUser).list();
+//                .addEntity(Passenger.class).setParameter("idUser", idUser).list();
 //    }
 //
 //    @Override
@@ -177,7 +173,7 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
 //
 //    @Override
 //    @SuppressWarnings("unchecked")
-//    public List<User> searchByNameSublist(String search, int offset, int amount) {
+//    public List<Passenger> searchByNameSublist(String search, int offset, int amount) {
 //        String[] split = search.split(" ");
 //        String firstName = split[0].trim().toLowerCase();
 //        String lastName = "";
@@ -185,7 +181,7 @@ public class UserDaoImpl extends AbstractDao<User, Integer> implements UserDao {
 //            lastName = split[1].trim().toLowerCase();
 //        }
 //        return sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM users WHERE (first_name LIKE lower(:firstName) AND last_name LIKE lower(:lastName)) OR (first_name LIKE lower(:lastName) AND last_name LIKE lower(:firstName)) LIMIT :offset, :amount")
-//                .addEntity(User.class).setParameter("firstName", "%" + firstName + "%").setParameter("lastName", "%" + lastName + "%")
+//                .addEntity(Passenger.class).setParameter("firstName", "%" + firstName + "%").setParameter("lastName", "%" + lastName + "%")
 //                .setParameter("offset", offset).setParameter("amount", amount).list();
 //    }
 //

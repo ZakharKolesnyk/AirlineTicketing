@@ -4,6 +4,7 @@ package com.gmail.kolesnyk.zakhar.dao.flight;
 import com.gmail.kolesnyk.zakhar.dao.AbstractDao;
 import com.gmail.kolesnyk.zakhar.dao.BaseDao;
 import com.gmail.kolesnyk.zakhar.dao.airport.Airport;
+import com.gmail.kolesnyk.zakhar.dao.plane.Plane;
 import com.gmail.kolesnyk.zakhar.dao.seat.Seat;
 
 import javax.persistence.*;
@@ -31,10 +32,10 @@ public class Flight implements Serializable {
     private Integer idFlight;
 
     @Column(name = "departure_date")
-    private String departureDate;
+    private Long departureDate;
 
     @Column(name = "arrival_date")
-    private String arrivalDate;
+    private Long arrivalDate;
 
     @JoinColumn(name = "id_departure_airport", referencedColumnName = "id_airport")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
@@ -46,6 +47,10 @@ public class Flight implements Serializable {
 
     @Column(name = "range_flight")
     private Integer rangeFlight;
+
+    @JoinColumn(name = "id_plane", referencedColumnName = "id_plane")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Plane plane;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "seats",
@@ -60,13 +65,22 @@ public class Flight implements Serializable {
     public String toString() {
         return "Flight{" +
                 "idFlight=" + idFlight +
-                ", departureDate='" + departureDate + '\'' +
-                ", arrivalDate='" + arrivalDate + '\'' +
+                ", departureDate=" + departureDate +
+                ", arrivalDate=" + arrivalDate +
                 ", departureAirport=" + departureAirport +
                 ", destinationAirport=" + destinationAirport +
                 ", rangeFlight=" + rangeFlight +
+                ", plane=" + plane +
                 ", seats=" + seats +
                 '}';
+    }
+
+    public Plane getPlane() {
+        return plane;
+    }
+
+    public void setPlane(Plane plane) {
+        this.plane = plane;
     }
 
     public Integer getIdFlight() {
@@ -77,19 +91,19 @@ public class Flight implements Serializable {
         this.idFlight = idFlight;
     }
 
-    public String getDepartureDate() {
+    public Long getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(String departureDate) {
+    public void setDepartureDate(Long departureDate) {
         this.departureDate = departureDate;
     }
 
-    public String getArrivalDate() {
+    public Long getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(String arrivalDate) {
+    public void setArrivalDate(Long arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 

@@ -2,22 +2,22 @@ package com.gmail.kolesnyk.zakhar;
 
 import com.gmail.kolesnyk.zakhar.airportService.AirportService;
 import com.gmail.kolesnyk.zakhar.cityService.CityService;
-import com.gmail.kolesnyk.zakhar.dao.seat.Seat;
 import com.gmail.kolesnyk.zakhar.flightService.FlightService;
 import com.gmail.kolesnyk.zakhar.ticketService.TicketService;
-import com.gmail.kolesnyk.zakhar.userService.UserService;
+import com.gmail.kolesnyk.zakhar.passengerService.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Service
 public class DEBUGGER_PANE extends JFrame {
 
     @Autowired
-    private UserService userService;
+    private PassengerService passengerService;
 
     @Autowired
     private CityService cityService;
@@ -78,27 +78,27 @@ public class DEBUGGER_PANE extends JFrame {
 
     private void invoke1() {
         System.out.println("\n\n\n\n");
-        userService.listUsers().forEach(a -> System.out.println(a.getFirstName()));
-        System.out.println(userService.getUserById(1).getFirstName());
+        passengerService.listUsers().forEach(a -> System.out.println(a.getFirstName()));
+        System.out.println(passengerService.getUserById(1).getFirstName());
         cityService.listCity().forEach(System.out::println);
         cityService.listCityByIdCountry(1).forEach(System.out::println);
         cityService.listCityByIdCountry(2).forEach(System.out::println);
         airportService.listAirports().forEach(System.out::println);
         flightService.listFlights().forEach(System.out::println);
+        ticketService.listTickets().forEach(System.out::println);
         System.out.println("\n\n\n\n");
     }
 
     private void invoke2() {
-
-        ticketService.listTickets().forEach(System.out::println);
+        flightService.listFlights().forEach(System.out::println);
 
     }
 
     private void invoke3() {
-        System.out.println(userService.getUserById(1).getFirstName());
     }
 
     private void invoke4() {
-        System.out.println(userService.getUserById(1).getFirstName());
+        System.out.println(Timestamp.valueOf(LocalDateTime.parse("2017-07-03T22:15:30")).getTime());
+        System.out.println(Timestamp.valueOf(LocalDateTime.parse("2017-07-04T10:15:30")).getTime());
     }
 }

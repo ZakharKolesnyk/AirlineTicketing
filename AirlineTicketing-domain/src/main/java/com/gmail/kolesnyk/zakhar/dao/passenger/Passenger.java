@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar.dao.user;
+package com.gmail.kolesnyk.zakhar.dao.passenger;
 
 import com.gmail.kolesnyk.zakhar.dao.AbstractDao;
 import com.gmail.kolesnyk.zakhar.dao.BaseDao;
@@ -7,17 +7,17 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * The {@code User} JPA entity that mapped on table "users"
+ * The {@code Passenger} JPA entity that mapped on table "passengers"
  *
  * @author Kolesnyk Zakhar
- * @see com.gmail.kolesnyk.zakhar.dao.user.UserDao
+ * @see PassengerDao
  * @see BaseDao
  * @see AbstractDao
  * @since JDK1.8
  */
 @Entity
-@Table(name = "users")
-public class User implements Serializable {
+@Table(name = "passengers")
+public class Passenger implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +38,7 @@ public class User implements Serializable {
 
     private transient String creditCard;
 
-    public User() {
+    public Passenger() {
     }
 
     public Integer getIdUser() {

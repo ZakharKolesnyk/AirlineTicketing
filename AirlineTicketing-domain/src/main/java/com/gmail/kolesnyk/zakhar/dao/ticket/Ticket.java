@@ -3,8 +3,8 @@ package com.gmail.kolesnyk.zakhar.dao.ticket;
 import com.gmail.kolesnyk.zakhar.dao.AbstractDao;
 import com.gmail.kolesnyk.zakhar.dao.BaseDao;
 import com.gmail.kolesnyk.zakhar.dao.flight.Flight;
+import com.gmail.kolesnyk.zakhar.dao.passenger.Passenger;
 import com.gmail.kolesnyk.zakhar.dao.seat.Seat;
-import com.gmail.kolesnyk.zakhar.dao.user.User;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -33,7 +33,7 @@ public class Ticket implements Serializable {
 
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    private User user;
+    private Passenger user;
 
     @JoinColumn(name = "id_flight", referencedColumnName = "id_flight")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
@@ -57,7 +57,7 @@ public class Ticket implements Serializable {
     public String toString() {
         return "Ticket{" +
                 "idTicket=" + idTicket +
-                ", user=" + user +
+                ", passenger=" + user +
                 ", flight=" + flight +
                 ", dateOrder=" + dateOrder +
                 ", seat=" + seat +
@@ -73,11 +73,11 @@ public class Ticket implements Serializable {
         this.idTicket = idTicket;
     }
 
-    public User getUser() {
+    public Passenger getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Passenger user) {
         this.user = user;
     }
 
