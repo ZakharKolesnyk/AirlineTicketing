@@ -1,7 +1,7 @@
 package com.gmail.kolesnyk.zakhar;
 
 
-import com.gmail.kolesnyk.zakhar.configurations.Config;
+import com.gmail.kolesnyk.zakhar.config.WebServiceConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 //@Service
@@ -13,7 +13,7 @@ public class DEBUG {
 //    private UserDao userDao;
     public static void main(String[] args) {
         /*ApplicationContext context =*/
-        new AnnotationConfigApplicationContext(Config.class);
+        new AnnotationConfigApplicationContext(WebServiceConfig.class);
 //        DEBUG debug=new DEBUG();
 //        DEBUG debug=context.getBean(DEBUG.class);
 //        System.out.println(debug.sessionFactory.getAllCollectionMetadata());

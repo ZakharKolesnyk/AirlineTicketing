@@ -1,5 +1,9 @@
 package com.gmail.kolesnyk.zakhar.dao.ticket;
 
 
-public class TicketDaoImpl implements TicketDao{
+import com.gmail.kolesnyk.zakhar.dao.AbstractDao;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class TicketDaoImpl extends AbstractDao<Ticket, Integer> implements TicketDao{
 }

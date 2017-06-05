@@ -42,6 +42,23 @@ public class Seat implements Serializable {
     public Seat() {
     }
 
+    public Seat(Double price, Boolean reserved, EnumSeat enumSeat) {
+        this.price = price;
+        this.reserved = reserved;
+        this.enumSeat = enumSeat;
+    }
+
+    @Override
+    public String toString() {
+        return "Seat{" +
+                "idSeat=" + idSeat +
+                ", idFlight=" + idFlight +
+                ", price=" + price +
+                ", reserved=" + reserved +
+                ", enumSeat=" + enumSeat +
+                '}';
+    }
+
     public void setIdSeat(Integer idSeat) {
         this.idSeat = idSeat;
     }

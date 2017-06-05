@@ -1,5 +1,7 @@
 package com.gmail.kolesnyk.zakhar.dao.seat;
 
 
-public class SeatDaoImpl implements SeatDao {
+import com.gmail.kolesnyk.zakhar.dao.AbstractDao;
+
+public class SeatDaoImpl extends AbstractDao<Seat, Integer> implements SeatDao {
 }

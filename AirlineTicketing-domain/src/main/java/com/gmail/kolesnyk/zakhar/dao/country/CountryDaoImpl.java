@@ -1,5 +1,9 @@
 package com.gmail.kolesnyk.zakhar.dao.country;
 
 
-public class CountryDaoImpl implements CountryDao {
+import com.gmail.kolesnyk.zakhar.dao.AbstractDao;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CountryDaoImpl extends AbstractDao<Country, Integer> implements CountryDao {
 }

@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/AirlineTicketing-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/AirlineTicketing-webService/pom.xml" />
       </list>
     </option>
   </component>

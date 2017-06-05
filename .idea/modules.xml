@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AirlineRicketing-client-desktop/AirlineRicketing-client-desktop.iml" filepath="$PROJECT_DIR$/AirlineRicketing-client-desktop/AirlineRicketing-client-desktop.iml" />
       <module fileurl="file://$PROJECT_DIR$/AirlineTicketing.iml" filepath="$PROJECT_DIR$/AirlineTicketing.iml" />
       <module fileurl="file://$PROJECT_DIR$/AirlineTicketing-domain/AirlineTicketing-domain.iml" filepath="$PROJECT_DIR$/AirlineTicketing-domain/AirlineTicketing-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AirlineTicketing-webService/AirlineTicketing-webService.iml" filepath="$PROJECT_DIR$/AirlineTicketing-webService/AirlineTicketing-webService.iml" />
     </modules>
   </component>
 </project>

@@ -195,27 +195,27 @@
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="54" parent="15" name="id_enum_seat">
+    <column id="54" parent="15" name="price">
       <Position>3</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="55" parent="15" name="price">
-      <Position>4</Position>
       <DataType>double|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="56" parent="15" name="reserved">
+    <column id="55" parent="15" name="reserved">
       <Position>5</Position>
       <DataType>tinyint(4)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <index id="57" parent="15" name="seats_enum_seats_id_enum_seat_fk">
-      <ColNames>id_enum_seat</ColNames>
-    </index>
-    <index id="58" parent="15" name="seats_flights_id_flight_fk">
+    <column id="56" parent="15" name="id_enum_seat">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="57" parent="15" name="seats_flights_id_flight_fk">
       <ColNames>id_flight</ColNames>
+    </index>
+    <index id="58" parent="15" name="seats_enum_seats_id_enum_seat_fk">
+      <ColNames>id_enum_seat</ColNames>
     </index>
     <key id="59" parent="15" name="PRIMARY">
       <ColNames>id_seat</ColNames>
@@ -232,8 +232,6 @@
       <RefSchemaName>airline_ticketing</RefSchemaName>
       <RefTableName>enum_seats</RefTableName>
       <RefColNames>id_enum_seat</RefColNames>
-      <OnUpdate>update</OnUpdate>
-      <OnDelete>delete</OnDelete>
     </foreign-key>
     <column id="62" parent="16" name="id_ticket">
       <Position>1</Position>

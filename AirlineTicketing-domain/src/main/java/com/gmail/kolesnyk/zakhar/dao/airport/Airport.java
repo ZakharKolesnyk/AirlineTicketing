@@ -35,6 +35,14 @@ public class Airport implements Serializable {
     public Airport() {
     }
 
+    @Override
+    public String toString() {
+        return "Airport{" +
+                "idAirport=" + idAirport +
+                ", city=" + city +
+                '}';
+    }
+
     public Integer getIdAirport() {
         return idAirport;
     }

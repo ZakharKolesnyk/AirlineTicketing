@@ -9,15 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>AirlineRicketing-client-desktop</artifactId>
+    <artifactId>AirlineTicketing-webService</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-<dependencies>
-    <dependency>
-        <artifactId>AirlineTicketing-domain</artifactId>
-        <groupId>com.gmail.kolesnyk.zakhar</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </dependency>
-</dependencies>
+
+    <dependencies>
+
+        <dependency>
+            <artifactId>AirlineTicketing-domain</artifactId>
+            <groupId>com.gmail.kolesnyk.zakhar</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
 
 </project>

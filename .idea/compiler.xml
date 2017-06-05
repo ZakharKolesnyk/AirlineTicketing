@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="AirlineRicketing-client-desktop" />
         <module name="AirlineTicketing-domain" />
+        <module name="AirlineTicketing-webService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AirlineRicketing-client-desktop" target="1.8" />
       <module name="AirlineTicketing" target="1.8" />
       <module name="AirlineTicketing-domain" target="1.8" />
+      <module name="AirlineTicketing-webService" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

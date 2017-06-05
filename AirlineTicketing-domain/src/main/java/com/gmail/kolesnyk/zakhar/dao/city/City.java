@@ -28,11 +28,31 @@ public class City implements Serializable {
     @Column(name = "id_city")
     private Integer idCity;
 
+    @Column(name = "name_city")
+    private String nameSity;
+
     @JoinColumn(name = "id_country", referencedColumnName = "id_country")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Country country;
 
     public City() {
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "idCity=" + idCity +
+                ", nameSity='" + nameSity + '\'' +
+                ", country=" + country +
+                '}';
+    }
+
+    public String getNameSity() {
+        return nameSity;
+    }
+
+    public void setNameSity(String nameSity) {
+        this.nameSity = nameSity;
     }
 
     public Integer getIdCity() {

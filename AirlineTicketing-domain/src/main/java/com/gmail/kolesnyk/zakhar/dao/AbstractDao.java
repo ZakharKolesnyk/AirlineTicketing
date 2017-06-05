@@ -26,32 +26,27 @@ public abstract class AbstractDao<T, I extends Serializable> implements BaseDao<
 
     @Override
     @SuppressWarnings("unchecked")
-    @Transactional(readOnly = true)
     public T selectById(I id) {
         return (T) sessionFactory.getCurrentSession().get(entityClass, id);
     }
 
     @Override
-    @Transactional
     public void save(T object) {
         sessionFactory.getCurrentSession().save(object);
     }
 
     @Override
-    @Transactional
     public void update(T object) {
         sessionFactory.getCurrentSession().update(object);
     }
 
     @Override
-    @Transactional
     public void remove(T object) {
         sessionFactory.getCurrentSession().delete(object);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    @Transactional(readOnly = true)
     public List<T> list() {
         return sessionFactory.getCurrentSession().createCriteria(entityClass).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
     }

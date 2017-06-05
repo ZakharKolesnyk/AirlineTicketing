@@ -1,5 +1,7 @@
 package com.gmail.kolesnyk.zakhar.dao.airport;
 
 
-public interface AirportDao {
+import com.gmail.kolesnyk.zakhar.dao.BaseDao;
+
+public interface AirportDao extends BaseDao<Airport, Integer> {
 }

@@ -53,6 +53,18 @@ public class Ticket implements Serializable {
     public Ticket() {
     }
 
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "idTicket=" + idTicket +
+                ", user=" + user +
+                ", flight=" + flight +
+                ", dateOrder=" + dateOrder +
+                ", seat=" + seat +
+                ", cost=" + cost +
+                '}';
+    }
+
     public Integer getIdTicket() {
         return idTicket;
     }

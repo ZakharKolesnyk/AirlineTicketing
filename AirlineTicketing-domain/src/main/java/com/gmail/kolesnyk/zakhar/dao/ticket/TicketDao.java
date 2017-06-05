@@ -1,5 +1,7 @@
 package com.gmail.kolesnyk.zakhar.dao.ticket;
 
 
-public interface TicketDao {
+import com.gmail.kolesnyk.zakhar.dao.BaseDao;
+
+public interface TicketDao extends BaseDao<Ticket, Integer> {
 }

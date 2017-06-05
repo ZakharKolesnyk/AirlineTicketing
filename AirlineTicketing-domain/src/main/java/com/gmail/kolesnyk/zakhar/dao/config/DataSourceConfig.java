@@ -1,4 +1,4 @@
-package com.gmail.kolesnyk.zakhar.configurations;
+package com.gmail.kolesnyk.zakhar.dao.config;
 
 import org.apache.tomcat.dbcp.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
@@ -75,7 +75,7 @@ public class DataSourceConfig {
         return new Properties() {
             {
                 setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
-                setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+//                setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
             }
         };
     }

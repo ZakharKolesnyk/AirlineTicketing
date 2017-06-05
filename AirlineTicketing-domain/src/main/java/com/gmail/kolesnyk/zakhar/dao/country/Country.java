@@ -32,6 +32,11 @@ public class Country implements Serializable {
     public Country() {
     }
 
+    @Override
+    public String toString() {
+        return nameCountry;
+    }
+
     public Integer getIdCountry() {
         return idCountry;
     }

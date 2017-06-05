@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>AirlineRicketing-client-desktop</module>
+        <module>AirlineTicketing-webService</module>
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

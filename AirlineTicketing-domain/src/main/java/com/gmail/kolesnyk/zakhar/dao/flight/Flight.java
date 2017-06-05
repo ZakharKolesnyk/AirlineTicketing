@@ -56,6 +56,19 @@ public class Flight implements Serializable {
     public Flight() {
     }
 
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "idFlight=" + idFlight +
+                ", departureDate='" + departureDate + '\'' +
+                ", arrivalDate='" + arrivalDate + '\'' +
+                ", departureAirport=" + departureAirport +
+                ", destinationAirport=" + destinationAirport +
+                ", rangeFlight=" + rangeFlight +
+                ", seats=" + seats +
+                '}';
+    }
+
     public Integer getIdFlight() {
         return idFlight;
     }

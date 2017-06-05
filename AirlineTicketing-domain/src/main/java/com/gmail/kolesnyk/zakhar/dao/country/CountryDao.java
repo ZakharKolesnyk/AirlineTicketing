@@ -1,5 +1,7 @@
 package com.gmail.kolesnyk.zakhar.dao.country;
 
 
-public interface CountryDao {
+import com.gmail.kolesnyk.zakhar.dao.BaseDao;
+
+public interface CountryDao extends BaseDao<Country, Integer> {
 }
