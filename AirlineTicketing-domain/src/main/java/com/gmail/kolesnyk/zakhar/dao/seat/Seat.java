@@ -4,6 +4,7 @@ import com.gmail.kolesnyk.zakhar.dao.AbstractDao;
 import com.gmail.kolesnyk.zakhar.dao.BaseDao;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * The {@code Seat} JPA entity that mapped on table "seats"
@@ -18,7 +19,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "seats")
-public class Seat {
+public class Seat implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

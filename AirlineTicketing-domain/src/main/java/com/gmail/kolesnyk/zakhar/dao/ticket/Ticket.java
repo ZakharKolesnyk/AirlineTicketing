@@ -43,7 +43,8 @@ public class Ticket implements Serializable {
     @Column(name = "date_order")
     private Timestamp dateOrder;
 
-    @Column(name = "seats")
+    @JoinColumn(name = "id_seat", referencedColumnName = "id_seat")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Seat seat;
 
     @Column(name = "cost")

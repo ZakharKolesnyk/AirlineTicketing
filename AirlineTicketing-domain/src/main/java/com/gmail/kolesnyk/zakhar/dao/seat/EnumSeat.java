@@ -4,6 +4,7 @@ import com.gmail.kolesnyk.zakhar.dao.AbstractDao;
 import com.gmail.kolesnyk.zakhar.dao.BaseDao;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * The {@code EnumSeat} JPA entity that mapped on table "enum_seats"
@@ -16,7 +17,9 @@ import javax.persistence.*;
  * @see AbstractDao
  * @since JDK1.8
  */
-public class EnumSeat {
+@Entity
+@Table(name = "enum_seats")
+public class EnumSeat implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +34,15 @@ public class EnumSeat {
     private TYPE_SEAT typeSeat;
 
     public EnumSeat() {
+    }
+
+    @Override
+    public String toString() {
+        return "EnumSeat{" +
+                "idEnumSeat=" + idEnumSeat +
+                ", nameSeat='" + nameSeat + '\'' +
+                ", typeSeat=" + typeSeat +
+                '}';
     }
 
     public Integer getIdEnumSeat() {
